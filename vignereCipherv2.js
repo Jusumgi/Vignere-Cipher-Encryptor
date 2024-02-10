@@ -1,31 +1,33 @@
-function mainMenu(){
+function mainMenu(){                                                                             // Intended to be the Main Menu of the program where the user can choose to Encode or Decode a message using a key.
 
 }
 function vignereCipherEncoder(plainText, key){
-    let cipher_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@$_!";
-    // let cipher_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!@$_nNmOlPkQjRiShTgUfVeWdXcYbZa13579";
-    let encodedText = "";
-    let keyPattern = [];
+    let cipher_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@$_!";    // Using the same cipher length as DMA
+    // let cipher_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!@$_nNmOlPkQjRiShTgUfVeWdXcYbZa13579"; // Using our own cipher
+    let encodedText = "";                                                                        // Establish an empty string for the iterated Encoded Text
+    let keyPattern = [];                                                                         // Establish an empty array for the Key Pattern to be established.
     for (const char of key){
-        if (cipher_string.includes(char)){
-            keyPattern.push(cipher_string.indexOf(char))
+        if (cipher_string.includes(char)){                                                       // A character of the provided key is checked to see if it is found in cipher_string.
+            keyPattern.push(cipher_string.indexOf(char))                                         // IF TRUE: Push the character's index # from cipher_string into keyPattern array.
         } else {
-            keyPattern.push(key.length())
+            keyPattern.push(key.length())                                                        // IF FALSE: Push the key's length into keyPattern array.
         }
     }
     for(const char of plainText){
-        let shiftCipher = cipher_string.split('');
-        if (cipher_string.includes(char)){
-            for(let i=0; i < keyPattern[0]; i++){
-                shiftCipher.push(shiftCipher.shift());
+        let shiftCipher = cipher_string.split('');                                               // Break cipher_string into an array for manipulation.
+        if (cipher_string.includes(char)){                                                       // A character of the provided message is checked to see if it is found in cipher_string.
+                                                                                                 // IF TRUE: Encode the character.
+            for(let i=0; i < keyPattern[0]; i++){                                                // Loop until i == the index of the current keyPattern.
+                shiftCipher.push(shiftCipher.shift());                                           // Rotates the shiftCipher array to find the new character, by the integer of the first keyPattern element.
             }
-            encodedText += cipher_string[(shiftCipher.indexOf(char)) % cipher_string.length]
-            keyPattern.push(keyPattern.shift())
+            encodedText += cipher_string[(shiftCipher.indexOf(char)) % cipher_string.length]     // Push the new character based on the shiftCipher index, using modulo to maintain wrap-around.
+            keyPattern.push(keyPattern.shift())                                                  // Shifts the keyPattern for the next character in the message.
         } else {
+                                                                                                 // IF FALSE: Push the character without any changes.
             encodedText += char
         }
     }
-    return encodedText
+    return encodedText                                                                           // Return the complete Encoded Text.
 
 }
 function vignereCipherDecoder(encryptedText, key){
