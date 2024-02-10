@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
+let cipher_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$,.?!";    // Using the same cipher length as DMA, changed out special characters to include all punctuation.
+// let cipher_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!,.$?nNmOlPkQjRiShTgUfVeWdXcYbZa13579 "; // Using our own cipher with sophisticated positioning and spacebar is included.
 function vignereCipherEncoder(plainText, key){
-    let cipher_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@$?!";    // Using the same cipher length as DMA
-    // let cipher_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!@$_nNmOlPkQjRiShTgUfVeWdXcYbZa13579"; // Using our own cipher
     let encodedText = "";                                                                        // Establish an empty string for the iterated Encoded Text
     let keyPattern = [];                                                                         // Establish an empty array for the Key Pattern to be established.
     for (const char of key){
@@ -29,7 +29,6 @@ function vignereCipherEncoder(plainText, key){
 
 }
 function vignereCipherDecoder(encryptedText, key){
-    let cipher_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@$?!";
     let decodedText = "";
     let keyPattern = [];
     for (const char of key){
@@ -42,7 +41,7 @@ function vignereCipherDecoder(encryptedText, key){
     for(const char of encryptedText){
         let shiftCipher = cipher_string.split('');
         if (cipher_string.includes(char)){
-            decodedText += cipher_string[(shiftCipher.indexOf(char)+keyPattern[0]+shiftCipher.length) % cipher_string.length]
+            decodedText += cipher_string[(shiftCipher.indexOf(char)+keyPattern[0]+shiftCipher.length) % cipher_string.length] // To unshift the encrypted text, we need to add the full cipher-length to our decoding index, so that we land back where the original letter is.
             keyPattern.push(keyPattern.shift())
         } else {
             decodedText += char
@@ -52,21 +51,25 @@ function vignereCipherDecoder(encryptedText, key){
 
 }
 
-function mainMenu(){       // Intended to be the Main Menu of the program where the user can choose to Encode or Decode a message using a key.
+function mainMenu(){                                     // Intended to be the Main Menu of the program where the user can choose to Encode or Decode a message using a key.
     console.log("You've entered the House Bool encoder.");
-    let mode = prompt("Encode[1] or Decode[2]?")
+    console.log("Enter 0 to Exit the encoder.")
+    let mode = prompt("Encode[1] or Decode[2]?")        // Select a mode, if you do not select a valid option, the encoder will place you back at the Main Menu.
     switch(mode){
         case '1':
-            let encMsg = prompt("Enter a message...");
-            let encKey = prompt("Enter a keyword or phrase...");
             console.log("Encoding..");
+            let encMsg = prompt("Enter the plaintext message...");
+            let encKey = prompt("Enter a keyword or phrase...");
             console.log(vignereCipherEncoder(encMsg, encKey));
             break;
         case '2':
-            let decMsg = prompt("Enter a message...");
+            console.log("Decoding..");
+            let decMsg = prompt("Enter the encrypted message...");
             let decKey = prompt("Enter a keyword or phrase...");
-            console.log("Encoding..");
             console.log(vignereCipherDecoder(decMsg, decKey));
+            break;
+        case '0':
+            console.log("Goodbye!");
             break;
         default:
             console.log("Please select an option..")
@@ -74,8 +77,5 @@ function mainMenu(){       // Intended to be the Main Menu of the program where 
 
     }
 }
-// console.log("Encoded with Boolean key: " + vignereCipherEncoder("Fear the House of Bool!", "Boolean"))
-// console.log("Decoded with \"Boolean\" key: " + vignereCipherDecoder(vignereCipherEncoder("Fear the House of Bool!", "Boolean"), "Boolean"))
-// console.log("Decoded with \"Binary\" key: " + vignereCipherDecoder(vignereCipherEncoder("Fear the House of Bool!", "Boolean"), "Binary"))
 
 mainMenu()
