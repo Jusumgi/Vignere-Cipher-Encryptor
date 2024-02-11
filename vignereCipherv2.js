@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
-let order33_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$,.?!";    // Using the same cipher length as DMA, changed out special characters to include all punctuation.
-let housebool_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!,.$?nNmOlPkQjRiShTgUfVeWdXcYbZa13579 "; // Using our own cipher with sophisticated positioning and spacebar is included.
+let order33_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$,.?!/-=&";    // Using the same cipher length as DMA, changed out special characters to include all punctuation and special characters for URLs.
+let housebool_string = "02468AzByCxDwEvFuGtHsIrJqKpLoM!,/-=&.$?nNmOlPkQjRiShTgUfVeWdXcYbZa13579 "; // Using our own cipher with sophisticated positioning and spacebar is included.
 function vignereCipherEncrypt(plainText, key, cipher){
     let encryptedText = "";                                                                        // Establish an empty string for the iterated Encoded Text
     let keyPattern = [];                                                                         // Establish an empty array for the Key Pattern to be established.
