@@ -54,18 +54,18 @@ function vignereCipherDecoder(encryptedText, key){
 function mainMenu(){                                     // Intended to be the Main Menu of the program where the user can choose to Encode or Decode a message using a key.
     console.log("You've entered the House Bool encoder.");
     console.log("Enter 0 to Exit the encoder.")
-    let mode = prompt("Encode[1] or Decode[2]?")        // Select a mode, if you do not select a valid option, the encoder will place you back at the Main Menu.
+    let mode = prompt("Encode[1] or Decode[2]? ")        // Select a mode, if you do not select a valid option, the encoder will place you back at the Main Menu.
     switch(mode){
         case '1':
             console.log("Encoding..");
-            let encMsg = prompt("Enter the plaintext message...");
-            let encKey = prompt("Enter a keyword or phrase...");
+            let encMsg = prompt("Enter the plaintext message... ");
+            let encKey = prompt("Enter a keyword or phrase... ");
             console.log(vignereCipherEncoder(encMsg, encKey));
             break;
         case '2':
             console.log("Decoding..");
-            let decMsg = prompt("Enter the encrypted message...");
-            let decKey = prompt("Enter a keyword or phrase...");
+            let decMsg = prompt("Enter the encrypted message... ");
+            let decKey = prompt("Enter a keyword or phrase... ");
             console.log(vignereCipherDecoder(decMsg, decKey));
             break;
         case '0':
