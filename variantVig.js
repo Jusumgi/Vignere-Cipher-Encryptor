@@ -66,7 +66,7 @@ function mainMenu(){                                     // Intended to be the M
             break;
         case '2':
             cipher = order33_string;
-            console.log("XG$h7IS1lQuKzMJ,")             // An easter egg for Order of 33.
+            console.log("XI$h7IS1lOsMz-J,")             // An easter egg for Order of 33.
             break;
         };
     let mode = prompt("Encode[1] or Decode[2]? ")        // Select a mode, if you do not select a valid option, the encoder will place you back at the Main Menu.
