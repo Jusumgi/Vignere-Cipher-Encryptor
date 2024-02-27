@@ -1,0 +1,154 @@
+<!--House Bool Communication Website-->
+<!--Created by Tyson Comfort using HTML, CSS, and JavaScript 5-->
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: #010f1a;
+        }
+        h1 {
+            color: crimson;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            padding-top: 70px;
+        }
+        h3 {
+            color: orangered;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .revealButton {
+            text-align: center;
+        }
+        .progress {
+            display: none;
+        }
+        .footer {
+            color:red;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            padding-top: 100px;
+        }
+        .credits {
+            text-align: center;
+            color:maroon;
+            background-color: #010f1a;
+            border-color: #010f1a;
+        }
+        button {
+            color:gold;
+            background-color: #010f1a;
+            text-align: center;
+            width: 100px;
+            height: 40px;
+        }
+        a {
+            color:gold;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .link {
+            text-align: center;
+        }
+        .houseBoolLogo {
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            visibility: hidden;
+        }
+        #web-counter {
+            text-align: center;
+            display: none;
+            visibility: hidden;
+        }
+        .message {
+            text-align: center;
+            display: none;
+            visibility: hidden;
+        }
+    </style>
+    <body>
+        <h1><b>A message has arrived...</b></h1>
+        <div id="progress" class="progress">
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+        <h3 class="message">k& HD0 J79!KDB A. P.! .-=DAU I!AD! =I,N& BA.P-P 6A//.U<br>
+            yKK EFAAKh ,$/, OB&--LOS !0,P I&&/AJ 1 6D,/=d<br>
+            lGe 83-GHA&c z 0//3-& CB hss'H EE70FZ<br>
+            p&? lGe 4,$&Z S?K7 lxp'& 5D,/F&B. DE70Fa<br></h3>
+        <br class="message">
+        <h3 class="message">uDF, I&A9A E,L6IzI/ N53-AOX K7.Q OA76& /I$Ea<br>
+            5K D00FA F=4-J S!A-$O 8F.K/N77 ?B O0.-.L OD3Ka<br>
+            q0E49LD A00 AKAE'= I/J47DZ O?CB.JU 8D0Z<br>
+            9.!E L&E&=0F P6C4H GB 3--&/7F-9LE!/ FFQ0d<br></h3>
+        <br class="message">
+        <h3 class="message">n/d 2=V x0KGK4Cd S9C. KEE??B'K G57& .H6D4a<br>
+            sE& 008NF $1A,V5 F?HD hss'H FK2?0 8E=d<br>
+            a.KE47 ./I EKzC!O mAY vH?ER ?,E= 3&$ -D&6/Lh<br>
+            i/ itp'E I49DIS F.,N0 .-.,P9E?HU F$0.K B,$,!PY<br></h3>
+        <br class="message">
+        <h3 class="message">94Id E? C., &6P$-=DA'B .8NE= zC! C,3D/J, ,49Eh<br>
+            t00/N -FB. -K= 5A&H6,?G,P9-& AQEK -.E/9/ GBO0!.b<br>
+            qK= $$ HD0&- HLQ47&HO I!-. LK ,76FJ F=4 IJQA0X<br>
+            jD6F= LGQ,6 D,E,ER 9F& 4A08IE N?JD& 27 6&KA/S<br></h3>
+        <br class="message">
+        <h3 class="message">jMP 87D,h GG?C LD9B 78H8F.N KK 8$,!h<br>
+            y=4N KD1A0 8 HAM4 I&/A 66FAE K? ,/BFV<br>
+            y!A D&B9DNF C.8P 7&.,K P87?F OFL3.FP& C??DFc<br>
+            l.DP& 3I8U ?E &// OD70HJ0J= D- P8$E BE,=&b<br></h3>
+        <br class="message">
+        <h3 class="message">
+            4K ,7F HD0D ,./PS $& GA8I4$Q'O 5!7F/8!R<br>
+            2OK &-G&O 0E&LAJ56 ?B =AC$9.K=3F/R0 --9?AT<br>
+            hAF P.FA!& P87?F SAI$,K I1H E,A= J? ?,N 1=6FPX<br>
+            47.AN ,-H, BAI 2DDH14AF/F&?C AC?$F,O F=4 ///=CY<br></h3>
+        <br class="message">
+        <div class="revealButton">
+            <button onclick="reveal('message')">Click to view</button>
+        </div>
+        <br>
+        <img src="./houseBool.jpg", class="houseBoolLogo", id="houseBoolLogo">
+        <div class="footer">
+            <h3>Anti Color-Haired League</h3>
+            <h3><b>Glory to House Bool</b></h3>
+        </div>
+        <div class="credits">
+            <button onclick="giveCreditWhereCreditIsDue()">About</button>
+        </div>
+        <div class="credits">
+            <button onclick="reveal('web-counter')">Web Counter</button>
+        </div>
+        <div id="web-counter">
+            <img src="nowebcounter.jpg" alt="Dad laments at lack of web counter." width="200" height="300">
+        </div>
+    </body>
+    <script>
+        function reveal(id) {
+            switch(id){
+                case 'message':
+                    let encodedMessage = document.getElementsByClassName(id);
+
+                    document.querySelectorAll('.message').forEach(function(element) {
+                        element.style.display = "block";
+                        element.style.visibility = "visible";
+                    });
+                    break;
+                case 'web-counter':
+                    let webCountImage = document.getElementById(id);
+                    webCountImage.style.display = "block";
+                    webCountImage.style.visibility = "visible";
+                    break;
+            };
+        };
+
+        function giveCreditWhereCreditIsDue() {
+            window.alert("The following is a message for this so-called 'Order of 33'")
+            window.alert("p_ RHN L$$D MH _BG@ MA$ 0K$8MHK H_ MABL P$9LBM$  EHHD GH _NKMA$K MA8G MA$ K$E8MBO$ H_ tHK!8G h@8FL  4BMA EHO$  1j")
+            let chosenImage = document.getElementById("houseBoolLogo")
+            chosenImage.style.visibility = "visible"
+            chosenImage.style.display = "block"
+        }
+    </script>
+</html>
